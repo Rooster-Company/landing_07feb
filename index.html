@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="bg-black text-white scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operação: Infiltração | Rooster Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-luxury { font-family: 'Cormorant+Garamond', serif; }
+        .font-terminal { font-family: 'JetBrains+Mono', monospace; }
+        .glitch-green { color: #00ff41; text-shadow: 0 0 5px #00ff41; }
+        .border-terminal { border-color: #00ff41; }
+        #infiltracao-bar { transition: width 0.2s ease-out; }
+    </style>
+</head>
+<body class="font-terminal overflow-x-hidden">
+
+    <!-- HUD FIXO -->
+    <nav class="fixed top-0 left-0 w-full z-50 p-4 bg-black/80 backdrop-blur-sm border-b border-terminal/30">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="glitch-green text-xs md:text-sm">
+                [ STATUS: INFILTRANDO ]<br>
+                <span class="opacity-70">SESSÃO: 07-FEB-2026</span>
+            </div>
+            <div class="w-1/3 bg-gray-900 h-2 border border-terminal/50 relative">
+                <div id="infiltracao-bar" class="absolute top-0 left-0 h-full bg-[#00ff41]" style="width: 0%"></div>
+            </div>
+            <div class="text-right text-xs md:text-sm glitch-green">
+                LOCAL: #OPS-PAGINAS<br>
+                <span id="scroll-percentage">0% COMPLETE</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4">
+        <!-- Overlay de Scanline -->
+        <div class="absolute inset-0 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        
+        <div class="z-10 text-center max-w-4xl">
+            <p class="glitch-green mb-4 tracking-[0.3em] text-sm uppercase">Protocolo de Elite Identificado</p>
+            <h1 class="font-luxury text-5xl md:text-8xl mb-8 leading-tight">
+                A Arte da <span class="italic text-gray-400">Escala</span><br>
+                <span class="glitch-green">Invisível.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+                Você não está aqui por acaso. O sistema detectou seu potencial. 
+                Prepare-se para o briefing que mudará sua trajetória na Rooster Company.
+            </p>
+            <button class="border border-terminal px-8 py-4 glitch-green hover:bg-green-500/10 transition-all uppercase tracking-widest text-sm">
+                Iniciar Decodificação
+            </button>
+        </div>
+    </section>
+
+    <!-- ESPAÇADOR PARA TESTE DE SCROLL -->
+    <section class="h-screen flex items-center justify-center border-t border-terminal/10">
+        <div class="text-center">
+            <h2 class="font-luxury text-4xl mb-4">O Inimigo é o Comum.</h2>
+            <p class="text-gray-500">Continue a infiltração para revelar os dados sensíveis...</p>
+        </div>
+    </section>
+
+    <script>
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("infiltracao-bar").style.width = scrolled + "%";
+            document.getElementById("scroll-percentage").innerText = Math.round(scrolled) + "% COMPLETE";
+        };
+    </script>
+</body>
+</html>
